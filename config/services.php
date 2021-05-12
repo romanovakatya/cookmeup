@@ -36,6 +36,4 @@ return [
             'project-id' => env('GOOGLE_CLOUD_PROJECT')
         ]
     ]
-
-
 ];

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Livewire\Ingredient;
+use App\Http\Livewire\Photo;
+use App\Http\Livewire\Recipe;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RecipeController;
-use App\Http\Controllers\PhotoController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,8 +16,10 @@ use App\Http\Controllers\PhotoController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', Photo::class);
+Route::get('ingredients', Ingredient::class);
+Route::get('recipes', Recipe::class);
 
-Route::resource('photos', PhotoController::class);
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
