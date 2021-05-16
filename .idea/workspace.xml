@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fde272af-3cfb-438f-aa03-8addcdce8095" name="Default Changelist" comment="" />
+    <list default="true" id="fde272af-3cfb-438f-aa03-8addcdce8095" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Google/Vision/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Google/Vision/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Photo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/ingredient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/ingredient.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/photo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/photo.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/recipe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/recipe.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -174,6 +186,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="settings.editor.selected.configurable" value="Configurable.PHP.Blade" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -208,7 +221,17 @@
       <workItem from="1620719645276" duration="20839000" />
       <workItem from="1620747320704" duration="6743000" />
       <workItem from="1620759028883" duration="4651000" />
-      <workItem from="1620808338867" duration="10722000" />
+      <workItem from="1620808338867" duration="11606000" />
+      <workItem from="1620830068678" duration="3329000" />
+      <workItem from="1620842450757" duration="8539000" />
+      <workItem from="1620895867133" duration="13871000" />
+      <workItem from="1620916381719" duration="8411000" />
+      <workItem from="1620929237679" duration="4823000" />
+      <workItem from="1620976438711" duration="10405000" />
+      <workItem from="1620999308775" duration="6479000" />
+      <workItem from="1621018096289" duration="1335000" />
+      <workItem from="1621079562025" duration="17783000" />
+      <workItem from="1621175171728" duration="5755000" />
     </task>
     <servers />
   </component>

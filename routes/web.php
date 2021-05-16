@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', Photo::class);
 Route::get('ingredients', Ingredient::class);
-Route::get('recipes', Recipe::class);
+Route::get('recipes',Recipe::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

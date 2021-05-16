@@ -15,7 +15,7 @@ class Client
     /**
      * @throws ValidationException
      */
-    public static function getIngredients($photo): array
+    public static function getIngredients($photo)
     {
         $options = ['credentials' => config('services.google.vision.json-key')];
 
@@ -57,8 +57,14 @@ class Client
 
                 //devolvemos el array de los nombres de los objetos detectados,
                 //como keys de array usamos valor para evitar que se duplican los valores,
-                //array_push($arrayObjects, $localizedObject->getName());
-                $arrayObjects = Arr::add($arrayObjects, strtoupper($localizedObject->getName()), strtoupper($localizedObject->getName()));
+
+                $newObject = strtoupper($localizedObject->getName());
+                //dd($newObject);
+
+                if (!in_array($newObject, $arrayObjects)){
+                    array_push($arrayObjects, $newObject);
+                }
+                //$arrayObjects = Arr::add($arrayObjects, strtoupper($localizedObject->getName()), strtoupper($localizedObject->getName()));
             }
         } catch (ApiException $e) {
             printf($e);
@@ -69,5 +75,10 @@ class Client
             $imageAnnotatorClient->close();
         }
         return $arrayObjects;
+    }
+
+    public static function __callStatic($name, $arguments)
+    {
+        // TODO: Implement __callStatic() method.
     }
 }

@@ -1,7 +1,10 @@
 <div class="h-screen w-full flex flex-col justify-center items-center" xmlns:livewire="http://www.w3.org/1999/html">
+    {{print_r($photo->id)}}
     <div class="flex justify-center self-center">
         <div class="flex w-full h-auto items-center justify-center bg-grey-lighter">
-            <img src="{{ url('photos') . '/' . $photo->code }}" alt="Ingredients">
+            <div class="max-w-md flex flex-col items-center px-3 py-4 bg-white rounded-md shadow-lg tracking-wide border border-blue ">
+            <img src="{{ url('photos') . '/' . $photo->code }}" alt="Ingredients" class="w-auto rounded-md">
+            </div>
         </div>
     </div>
 
@@ -28,15 +31,15 @@
                     </div>
                  @error('newIngredient') <span class="error flex items-center font-medium tracking-wide text-red-500 text-s mt-1 ml-1">{{ $message }}</span> @enderror
 
-                    <div class="py-3 text-sm" >
-                        @foreach($ingredients as $ingredient)
-                            <div
+                    <div class="py-3 text-sm">
+                        @foreach($ingredients as $key => $ingredient)
+                            <div wire:key="{{ $key }}"
                                 class="flex justify-start cursor-pointer uppercase shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white font-bold rounded-md px-1 py-1 my-2 text-xs">
                                 <span class="bg-white h-2 w-2 m-2 mt-4 rounded-full"></span>
-                                <div wire:key="{{ $ingredient }}"
-                                    class="flex-grow font-medium font-bold px-2 py-3 hover:bg-indigo-700">  {{ $ingredient }}</div>
+                                <div wire:model="ingredient"
+                                     class="flex-grow font-medium font-bold px-2 py-3 hover:bg-indigo-700">  {{ $ingredient }}</div>
 
-                                <button wire:click="deleteIngredient"
+                                <button wire:click="deleteIngredient({{ $key }})"
                                     class="py-2 px-2 rounded tracking-widest uppercase text-center shadow bg-white focus:shadow-outline focus:outline-none text-indigo-600 focus:bg-red-500 focus:text-white">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
                                          viewBox="0 0 24 24" stroke="currentColor">
@@ -47,7 +50,6 @@
                             </div>
                         @endforeach
                     </div>
-
 
                     <div class="block bg-gray-50 text-sm py-2 px-3 -mx-3 -mb-2 rounded-b-lg">
                         <div class="flex justify-center self-center">
@@ -73,5 +75,4 @@
         </div>
     </div>
 </div>
-
 

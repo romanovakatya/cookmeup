@@ -4,24 +4,28 @@ namespace App\Http\Livewire;
 
 use App\Google\Vision\Client;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
 class Ingredient extends Component
 {
-    use WithPagination;
+  //  use WithPagination;
 
     public $ingredients;
     public $newIngredient;
     public $ingredient;
     public $photo;
 
+    protected $listeners = ['ingredientsDefined' => 'cookmeup'];
+
     protected $rules = [
-        'newIngredient' => 'required'
+        'newIngredient' => ['required']
     ];
 
     protected $messages = [
-        'newIngredient.required' => 'You have not written any new ingredients',
+        'newIngredient.required' => 'You have not written any new ingredients'
     ];
 
     /**
@@ -31,21 +35,39 @@ class Ingredient extends Component
     {
         $this->photo = \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first();
         $this->ingredients = Client::getIngredients($this->photo);
+
+        //dd($this->ingredients);
     }
 
     public function addIngredient()
     {
-        $this->validate();
-        //array_push($this->ingredients, $this->newIngredient);
-        $this->ingredients = Arr::add($this->ingredients, strtoupper($this->newIngredient), strtoupper($this->newIngredient));
+         $this->validate();
+
+       /* $validatedIngredient = Validator::make(
+            ['newIngredient' => $this->newIngredient],
+            ['required' => 'You have not written any new ingredients'],
+            [ Rule::notIn($this->ingredients)],
+        )->validate();
+        array_push($this->ingredients, $validatedIngredient);
+       */
+
+        if (!in_array(strtoupper($this->newIngredient), $this->ingredients)){
+            array_push($this->ingredients, strtoupper($this->newIngredient));
+        }
+        //$this->ingredients = Arr::add($this->ingredients, strtoupper($this->newIngredient), strtoupper($this->newIngredient));
         $this->reset('newIngredient');
     }
 
-    public function deleteIngredient()
+    public function deleteIngredient($id)
     {
-        //dd($this->ingredient);
-        $this->ingredients = Arr::except($this->ingredients, $this->ingredient);
-        //unset($this->ingredients, $oldIngredient);
+        foreach ($this->ingredients as $key => $ingredient) {
+            if ($key == $id) {
+                unset($this->ingredients[$key]);
+                $this->ingredients = array_values($this->ingredients);
+            }
+        }
+        //$this->ingredients = Arr::except($this->ingredients, $ingredient);
+
         // dd($this->ingredients);
     }
 
@@ -54,23 +76,21 @@ class Ingredient extends Component
         $this->redirect('/');
         //return redirect('/');
     }
+    public function __get($property)
+    {
+        return parent::__get($property);
+    }
 
     public function cookmeup()
     {
-        $this->redirect('/recipes');
-        //return redirect('/');
-    }
+       foreach ($this->ingredients as $value){
 
-    public function hydrate()
-    {
-        foreach ($this->ingredients as $ingredient) {
-            $this->ingredient = $ingredient;
+            $ingredient = new \App\Models\Ingredient();
+            $ingredient->photo_id = $this->photo->id;
+            $ingredient->name =$value;
+            $ingredient->save();
         }
-    }
-
-    public function dehydrate()
-    {
-
+       $this->redirect('recipes');
     }
 
     public function render()
@@ -84,6 +104,7 @@ class Ingredient extends Component
                 //'photo' => \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first(),
                 // $this->ingredients =  $this->setIngredients(),
                 //'ingredients' => $collection->paginate(2),
+
             ])
             ->extends('layouts.guest');
     }

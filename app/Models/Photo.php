@@ -13,4 +13,9 @@ class Photo extends Model
     {
         return $this->belongsTo(Session::class);
     }
+
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredient::class);
+    }
 }
