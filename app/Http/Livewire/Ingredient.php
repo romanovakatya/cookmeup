@@ -18,8 +18,6 @@ class Ingredient extends Component
     public $ingredient;
     public $photo;
 
-    protected $listeners = ['ingredientsDefined' => 'cookmeup'];
-
     protected $rules = [
         'newIngredient' => ['required']
     ];
@@ -35,8 +33,6 @@ class Ingredient extends Component
     {
         $this->photo = \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first();
         $this->ingredients = Client::getIngredients($this->photo);
-
-        //dd($this->ingredients);
     }
 
     public function addIngredient()
@@ -76,10 +72,10 @@ class Ingredient extends Component
         $this->redirect('/');
         //return redirect('/');
     }
-    public function __get($property)
+   /* public function __get($property)
     {
         return parent::__get($property);
-    }
+    }*/
 
     public function cookmeup()
     {

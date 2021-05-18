@@ -3,6 +3,7 @@
 use App\Http\Livewire\Ingredient;
 use App\Http\Livewire\Photo;
 use App\Http\Livewire\Recipe;
+use App\Http\Livewire\ShowRecipe;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', Photo::class);
 Route::get('ingredients', Ingredient::class);
 Route::get('recipes',Recipe::class);
+Route::get('recipe/{idRecipe}',ShowRecipe::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');

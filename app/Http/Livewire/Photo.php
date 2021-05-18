@@ -38,3 +38,4 @@ class Photo extends Component
             ->extends('layouts.guest');
     }
 }
+//APP_URL=http://cookmeup.test

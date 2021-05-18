@@ -18,8 +18,8 @@
         <div class="py-4" wire:loading.remove wire:target="save">
             <label class="block tracking-widest uppercase text-center shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">
                 <div wire:loading.remove wire:target="photo"> Make photo</div>
-                <input wire:model="photo" wire:loading.attr="disabled" id="photo" name="photo" type="file" accept="image/*" capture="camera" class="hidden">
-                <!-- para avisar el usuario que su foto está subiendo-->
+                <input wire:model="photo" wire:loading.attr="disabled" id="photo" name="photo" type="file" accept="image/*"  class="hidden">
+                <!-- para avisar el usuario que su foto está subiendo capture="camera"-->
                 <div wire:loading wire:target="photo">Uploading the photo ...</div>
             </label>
         </div>

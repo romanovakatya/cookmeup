@@ -1,5 +1,5 @@
 <div class="h-screen w-full flex flex-col justify-center items-center" xmlns:livewire="http://www.w3.org/1999/html">
-    {{print_r($photo->id)}}
+    {{--print_r($photo->id)--}}
     <div class="flex justify-center self-center">
         <div class="flex w-full h-auto items-center justify-center bg-grey-lighter">
             <div class="max-w-md flex flex-col items-center px-3 py-4 bg-white rounded-md shadow-lg tracking-wide border border-blue ">
