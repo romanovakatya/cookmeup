@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="fde272af-3cfb-438f-aa03-8addcdce8095" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Google/Vision/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Google/Vision/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Photo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/ShowRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/ShowRecipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +238,7 @@
       <workItem from="1621363537661" duration="11137000" />
       <workItem from="1621400319636" duration="17563000" />
       <workItem from="1621440668705" duration="600000" />
-      <workItem from="1621450285045" duration="610000" />
+      <workItem from="1621450285045" duration="2097000" />
     </task>
     <servers />
   </component>

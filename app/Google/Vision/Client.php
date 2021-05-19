@@ -4,10 +4,7 @@ namespace App\Google\Vision;
 
 use Google\ApiCore\ApiException;
 use Google\ApiCore\ValidationException;
-use Google\Cloud\Vision\V1\Feature\Type;
 use Google\Cloud\Vision\V1\ImageAnnotatorClient;
-use Google\Cloud\Vision\V1\Likelihood;
-use Illuminate\Support\Arr;
 
 
 class Client
@@ -27,13 +24,7 @@ class Client
         $arrayObjects = [];
 
         try {
-           // dd(base_path() . '\\storage\\app\\public\\2.jpg');
-            //$imageResource = fopen(base_path() . '\\storage\\app\\public\\2.jpg', 'r');
 
-            //$features = [Type::OBJECT_LOCALIZATION, Type::LABEL_DETECTION, Type::IMAGE_PROPERTIES,Type::TYPE_UNSPECIFIED];
-            //$annotations = $imageAnnotatorClient->annotateImage($imageResource, $features);
-            //dd(url('photos') . '/' . $photo->code);
-            //
             $imageResource = fopen(public_path(('photos'). '\\' . $photo->code), 'r');
             //dd($imageResource);
 
@@ -41,8 +32,6 @@ class Client
             //devuelve objeto con todos tipos de annotaciones (face, label, logo, text,...),
             $annotations = $imageAnnotatorClient->objectLocalization($imageResource);
             //dd($annotations);
-
-            //!!!!!!!!!!!!!!!añadir comprobación en el caso si no hay objetos en la foto!!!!!!!
 
             //para obtener las caracteristacas de los objetos detectados,
             //https://github.com/protocolbuffers/protobuf-php/blob/v3.15.8/src/Google/Protobuf/Internal/RepeatedField.php
@@ -52,7 +41,7 @@ class Client
 
             //para acceder al contenido del container:
             for ($counter = 0; $counter < $localizedObjects->count(); $counter++) {
-                //offsetGet($counter)
+
                 //Return the element at the given index.
                 $localizedObject = $localizedObjects->offsetGet($counter);
 
@@ -67,7 +56,6 @@ class Client
                 if (!in_array($newObject, $arrayObjects)){
                     array_push($arrayObjects, $newObject);
                 }
-                //$arrayObjects = Arr::add($arrayObjects, strtoupper($localizedObject->getName()), strtoupper($localizedObject->getName()));
             }
         } catch (ApiException $e) {
             printf($e);
@@ -78,10 +66,5 @@ class Client
             $imageAnnotatorClient->close();
         }
         return $arrayObjects;
-    }
-
-    public static function __callStatic($name, $arguments)
-    {
-        // TODO: Implement __callStatic() method.
     }
 }

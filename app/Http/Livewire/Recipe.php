@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Arr;
 use Livewire\Component;
 use Illuminate\Support\Facades\Http;
 
@@ -13,181 +12,28 @@ class Recipe extends Component
     public $stringIngredientsNames;
     private $arrayIngredientsNames = [];
 
-    public $recipes = [/*
-        0 => [
-            'id' => '632660',
-            'title' => 'Apricot Glazed Apple Tart',
-            'image' => "https://spoonacular.com/recipeImages/632660-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'cinnamon',
-                1 => 'butter',
-                2 => 'apricot preserves',
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'eggs',
-                2 => 'red apples'
-            ]
-        ],
-
-        1 => [
-            'id' => '123455',
-            'title' => 'BEasy & Delish! ~ Apple Crumble',
-            'image' => "https://spoonacular.com/recipeImages/641803-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        2 => [
-            'id' => '55',
-            'title' => 'Apple Cinnamon Blondies',
-            'image' => "https://spoonacular.com/recipeImages/157103-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'milk',
-                1 => 'egg',
-                2 => 'flour'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-        3 => [
-            'id' => '189',
-            'title' => 'Apple Or Peach Strudel',
-            'image' => "https://spoonacular.com/recipeImages/73420-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'baking powder',
-                1 => 'cinnamon',
-                2 => 'egg'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'milk'
-            ]
-        ],
-
-        4 => [
-            'id' => '345675',
-            'title' => 'Easy Homemade Apple Fritters',
-            'image' => "https://spoonacular.com/recipeImages/775666-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'baking powder',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        5 => [
-            'id' => '670234',
-            'title' => 'Baked Apple Pancake',
-            'image' => "https://spoonacular.com/recipeImages/633428-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'nuts'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        6 => [
-            'id' => '000000',
-            'title' => 'Apple Cake',
-            'image' => "https://spoonacular.com/recipeImages/632485-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        7 => [
-            'id' => '224456',
-            'title' => 'Flourless Apple Macadamia Cookies',
-            'image' => "https://spoonacular.com/recipeImages/643119-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        8 => [
-            'id' => '098674',
-            'title' => 'BEasy & Delish! ~ Apple Crumble',
-            'image' => "https://spoonacular.com/recipeImages/632463-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ],
-
-        9 => [
-            'id' => '6102846',
-            'title' => 'BEasy & Delish! ~ Apple Crumble',
-            'image' => "https://spoonacular.com/recipeImages/632471-312x231.jpg",
-            'missedIngredients' => [
-                0 => 'butter',
-                1 => 'cloves ground',
-                2 => 'lemon zest'
-            ],
-            'usedIngredients' => [
-                0 => 'apples',
-                1 => 'vanilla extract',
-                2 => 'baking soda'
-            ]
-        ]*/
-    ];
+    public $recipes = [];
 
     public function mount()
     {
+        // por la sessión sacamos datos de última foto (que es nuestra),
         $this->photo = \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first();
+        //por id de photo sacamos de BBDD datos de todos ingredientes,
         $this->arrayIngredients = \App\Models\Ingredient::all()->where('photo_id', $this->photo->id);
 
+        //en un array guardamos solo nombres de ingredientes,
+        //para utilizarlos luego en petición hasta la API de recetas,
         foreach ($this->arrayIngredients as $ingredient) {
             array_push($this->arrayIngredientsNames, $ingredient->name);
         }
 
+        //convierto array  con nombres de ingredientes en un String,
         $this->stringIngredientsNames = implode(',', $this->arrayIngredientsNames);
 
         $this->filterRecipesData();
     }
 
+    //enviamos ingredientes a la API y recibimos respuesta en el formato json,
     protected function getAllRecipesData()
     {
         $response = Http::withHeaders([
@@ -201,6 +47,7 @@ class Recipe extends Component
         return $response->json();
     }
 
+    //filtramos datos recibidos desde api para evitar duplicaciones,
     protected function filterRecipesData()
     {
         $recipesData = $this->getAllRecipesData();
@@ -218,7 +65,7 @@ class Recipe extends Component
 
                     $plural = substr($arrayUsedIngredients['name'], 0, strlen($arrayUsedIngredients['name']) - 1);
                     if (!in_array($plural, $this->recipes[$key]['usedIngredients'])) {
-                        // $this->recipes[$key]['usedIngredients'][$keyIngredient] = $arrayUsedIngredients['name'];
+
                         array_push($this->recipes[$key]['usedIngredients'], $arrayUsedIngredients['name']);
                     }
                 }
@@ -229,16 +76,16 @@ class Recipe extends Component
 
                     $plural = substr($arrayMissedIngredients['name'], 0, strlen($arrayMissedIngredients['name']) - 1);
                     if (!in_array($plural, $this->recipes[$key]['missedIngredients'])) {
-                        //$this->recipes[$key]['missedIngredients'][$keyIngredient] = $arrayMissedIngredients['name'];
+
                         array_push($this->recipes[$key]['missedIngredients'], $arrayMissedIngredients['name']);
                     }
                 }
             }
-
+            //se ven bien en la pantalla solo 6 ingredientes,
             if (count($this->recipes[$key]['usedIngredients']) > 3) {
                 $this->recipes[$key]['usedIngredients'] = array_slice($this->recipes[$key]['usedIngredients'], 0, 3);
             }
-            //se ven bien en la pantalla solo 6 ingredientes,
+
             $lengthMissedIngredients = 6 - count($this->recipes[$key]['usedIngredients']);
 
             if (count($this->recipes[$key]['missedIngredients']) > $lengthMissedIngredients) {
@@ -247,11 +94,13 @@ class Recipe extends Component
         }
     }
 
+    //función que muestra una reseta elegida,
     public function show($idRecipe)
     {
         $this->redirect('recipe/'. $idRecipe);
     }
 
+    //botón Make photo
     public function backToPhoto()
     {
         $this->redirect('/');
@@ -260,12 +109,6 @@ class Recipe extends Component
 
     public function render()
     {
-        /*dd($this->photo->id,
-            $this->ingredientsNames);*/
-        //dd($this->recipes);
-
-        //dd($this->ingredients);
-        //dd($this->stringIngredientsNames);
         return view('livewire.recipe')
             ->extends('layouts.guest');
     }
