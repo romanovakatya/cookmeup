@@ -35,7 +35,9 @@ return [
             'json-key' =>  dirname(__DIR__, 1) . '\\' . env('GOOGLE_APPLICATION_CREDENTIALS'),
             'project-id' => env('GOOGLE_CLOUD_PROJECT')
         ]
+    ],
+
+    'spoonacular' => [
+        'api_key' => env('spoonacular_api_key')
     ]
-
-
 ];

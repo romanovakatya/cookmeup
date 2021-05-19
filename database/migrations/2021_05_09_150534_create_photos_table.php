@@ -15,8 +15,8 @@ class CreatePhotosTable extends Migration
     {
         Schema::create('photos', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->string('url', 255);
+            $table->text('session_id');
+            $table->text('code');
             $table->timestamps();
         });
     }

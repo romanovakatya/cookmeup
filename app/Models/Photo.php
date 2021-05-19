@@ -9,10 +9,13 @@ class Photo extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'url'
-    ];
+    public function session()
+    {
+        return $this->belongsTo(Session::class);
+    }
 
-
+    public function ingredients()
+    {
+        return $this->hasMany(Ingredient::class);
+    }
 }
