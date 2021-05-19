@@ -13,7 +13,7 @@ class Recipe extends Component
     public $stringIngredientsNames;
     private $arrayIngredientsNames = [];
 
-    public $recipes = [
+    public $recipes = [/*
         0 => [
             'id' => '632660',
             'title' => 'Apricot Glazed Apple Tart',
@@ -171,7 +171,7 @@ class Recipe extends Component
                 1 => 'vanilla extract',
                 2 => 'baking soda'
             ]
-        ]
+        ]*/
     ];
 
     public function mount()
@@ -185,7 +185,7 @@ class Recipe extends Component
 
         $this->stringIngredientsNames = implode(',', $this->arrayIngredientsNames);
 
-        //$this->filterRecipesData();
+        $this->filterRecipesData();
     }
 
     protected function getAllRecipesData()
@@ -250,6 +250,12 @@ class Recipe extends Component
     public function show($idRecipe)
     {
         $this->redirect('recipe/'. $idRecipe);
+    }
+
+    public function backToPhoto()
+    {
+        $this->redirect('/');
+        //return redirect('/');
     }
 
     public function render()

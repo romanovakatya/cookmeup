@@ -1,5 +1,5 @@
 
-<div class="h-screen w-full flex flex-col justify-center items-center" xmlns:livewire="http://www.w3.org/1999/html">
+<div class="h-screen w-full flex flex-col justify-center items-center font-mono" xmlns:livewire="http://www.w3.org/1999/html">
     <div class="flex justify-center self-center">
         <div class="flex w-full h-auto items-center justify-center bg-grey-lighter">
             @if(isset($photo))

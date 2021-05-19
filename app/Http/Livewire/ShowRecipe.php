@@ -8,7 +8,7 @@ use Livewire\Component;
 class ShowRecipe extends Component
 {
     public $idRecipe;
-    public $recipe = [
+    public $recipe = [/*
         "title" => "Apricot Glazed Apple Tart",
         "image" => "https://spoonacular.com/recipeImages/632660-556x370.jpg",
         "extendedIngredients" => [
@@ -75,13 +75,13 @@ class ShowRecipe extends Component
                         ]
                     ]
                 ]
-            ]
+            ]*/
     ];
 
     public function mount($idRecipe)
     {
         $this->idRecipe = $idRecipe;
-        //$this->recipe = $this->getRecipeData();
+        $this->recipe = $this->getRecipeData();
     }
 
     protected function getRecipeData()

@@ -33,6 +33,7 @@ class Ingredient extends Component
     {
         $this->photo = \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first();
         $this->ingredients = Client::getIngredients($this->photo);
+
     }
 
     public function addIngredient()

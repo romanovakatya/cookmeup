@@ -17,6 +17,9 @@ class Client
      */
     public static function getIngredients($photo)
     {
+        ini_set("mbstring.func_overload", 0);
+        //dd(PHP_INT_MAX);
+
         $options = ['credentials' => config('services.google.vision.json-key')];
 
         $imageAnnotatorClient = new ImageAnnotatorClient($options);

@@ -3,13 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="fde272af-3cfb-438f-aa03-8addcdce8095" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Google/Vision/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Google/Vision/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Ingredient.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Photo.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Photo.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/Recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Livewire/ShowRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Livewire/ShowRecipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/ingredient.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/ingredient.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/photo.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/photo.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/livewire/recipe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/recipe.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/livewire/show-recipe.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/livewire/show-recipe.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,6 +167,7 @@
       <path value="$PROJECT_DIR$/vendor/google/cloud" />
       <path value="$PROJECT_DIR$/vendor/grpc/grpc" />
       <path value="$PROJECT_DIR$/vendor/rize/uri-template" />
+      <path value="$PROJECT_DIR$/vendor/symfony/filesystem" />
     </include_path>
   </component>
   <component name="ProjectId" id="1sGhoMcD1kZmnapuacxbcuKxo9R" />
@@ -195,6 +200,8 @@
       <recent name="C:\xampp\htdocs\cookmeup\app" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\cookmeup\storage\app\public" />
+      <recent name="C:\xampp\htdocs\cookmeup\storage\app\photos" />
       <recent name="C:\xampp\htdocs\cookmeup" />
     </key>
   </component>
@@ -230,7 +237,11 @@
       <workItem from="1621079562025" duration="17783000" />
       <workItem from="1621175171728" duration="22321000" />
       <workItem from="1621236945971" duration="790000" />
-      <workItem from="1621323054295" duration="20548000" />
+      <workItem from="1621323054295" duration="20781000" />
+      <workItem from="1621352202113" duration="6264000" />
+      <workItem from="1621363537661" duration="11137000" />
+      <workItem from="1621400319636" duration="17563000" />
+      <workItem from="1621440668705" duration="600000" />
     </task>
     <servers />
   </component>
