@@ -30,6 +30,8 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    //datos para acceder a la API Vision,
+    //hay que combrobar a que carpeta mira el servidor y si es Ubuntu cambiar contrabarra \\ a barra normal /
     'google' => [
         'vision' => [
             'json-key' =>  dirname(__DIR__, 1) . '\\' . env('GOOGLE_APPLICATION_CREDENTIALS'),
@@ -37,6 +39,7 @@ return [
         ]
     ],
 
+    //para conectrase a la API de recetas,
     'spoonacular' => [
         'api_key' => env('spoonacular_api_key')
     ]

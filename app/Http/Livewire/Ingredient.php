@@ -3,21 +3,16 @@
 namespace App\Http\Livewire;
 
 use App\Google\Vision\Client;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
-use Livewire\WithPagination;
 
 class Ingredient extends Component
 {
-  //  use WithPagination;
-
     public $ingredients;
     public $newIngredient;
     public $ingredient;
     public $photo;
 
+    //especificamos que el campo añadir un ingrediente no puede ser vacio,
     protected $rules = [
         'newIngredient' => ['required']
     ];
@@ -29,32 +24,28 @@ class Ingredient extends Component
     /**
      * @throws \Google\ApiCore\ValidationException
      */
+    //mount funciona como constructor, se ejecuta una vez antes de hacer render,
     public function mount()
     {
+        //foto se guarda solo despues de pusal el botón detect ingredients,
         $this->photo = \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first();
+        //sacamos los ingredientes que ha detectado API Vision,
         $this->ingredients = Client::getIngredients($this->photo);
 
     }
 
+    //función para añadir un ingrediente nuevo si falta algo,
     public function addIngredient()
     {
          $this->validate();
 
-       /* $validatedIngredient = Validator::make(
-            ['newIngredient' => $this->newIngredient],
-            ['required' => 'You have not written any new ingredients'],
-            [ Rule::notIn($this->ingredients)],
-        )->validate();
-        array_push($this->ingredients, $validatedIngredient);
-       */
-
         if (!in_array(strtoupper($this->newIngredient), $this->ingredients)){
             array_push($this->ingredients, strtoupper($this->newIngredient));
         }
-        //$this->ingredients = Arr::add($this->ingredients, strtoupper($this->newIngredient), strtoupper($this->newIngredient));
         $this->reset('newIngredient');
     }
 
+    //función para eliminar un ingrediente en el caso si API ha detectado lo que no queremos cocinar,
     public function deleteIngredient($id)
     {
         foreach ($this->ingredients as $key => $ingredient) {
@@ -63,21 +54,17 @@ class Ingredient extends Component
                 $this->ingredients = array_values($this->ingredients);
             }
         }
-        //$this->ingredients = Arr::except($this->ingredients, $ingredient);
-
-        // dd($this->ingredients);
     }
 
+    //el botón Make foto,
     public function backToPhoto()
     {
         $this->redirect('/');
-        //return redirect('/');
-    }
-   /* public function __get($property)
-    {
-        return parent::__get($property);
-    }*/
 
+    }
+
+    //función que guarda en BBDD lista final de los ingredientes,
+    //y redirecciona a la página con recetas,
     public function cookmeup()
     {
        foreach ($this->ingredients as $value){
@@ -92,17 +79,9 @@ class Ingredient extends Component
 
     public function render()
     {
-        //paginate no funciona
-        //$collection = collect($this->ingredients);
         //dd(Client::getIngredients($this->photo));
         // dd($this->ingredients);
-        return view('livewire.ingredient',
-            [
-                //'photo' => \App\Models\Session::find(request()->session()->getId())->photos()->latest()->first(),
-                // $this->ingredients =  $this->setIngredients(),
-                //'ingredients' => $collection->paginate(2),
-
-            ])
+        return view('livewire.ingredient')
             ->extends('layouts.guest');
     }
 }

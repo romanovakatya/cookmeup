@@ -42,6 +42,7 @@ return [
             'visibility' => 'public',
         ],
 
+        //ha sido añadida una carpeta donde se guardan fotos hecho por usuarios,
         'photos' => [
             'driver' => 'local',
             'root' => storage_path('app/photos'),

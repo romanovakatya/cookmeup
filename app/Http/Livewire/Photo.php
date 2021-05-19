@@ -11,7 +11,8 @@ class Photo extends Component
 
     public $photo;
 
-
+    //guardamos en BBDD el nombre de foto como el identificador único,
+    //la sacamos luego por la sessión,
     public function save()
     {
         /*$this->validate([
@@ -28,7 +29,7 @@ class Photo extends Component
         $photo->save();
 
         //getting to next page with ingredients:
-        //return redirect('ingredients');
+
         $this->redirect('ingredients');
     }
 
@@ -38,4 +39,4 @@ class Photo extends Component
             ->extends('layouts.guest');
     }
 }
-//APP_URL=http://cookmeup.test
+
